@@ -1,0 +1,33 @@
+﻿@page "/availableshifts"
+
+@inject HttpClient Http
+
+<h3>Alle ledige vagter</h3>
+@if (shifts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenDataGrid AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                    Data="@(shifts.Where(x => x.getTaken() == false))" TItem="Shift" ColumnWidth="300px">
+        <Columns>
+            <RadzenDataGridColumn TItem="Shift" Property="shift_id" Title="ID" Width="70px" />
+            <RadzenDataGridColumn TItem="Shift" Property="description" Title="Beskrivelse" />
+            <RadzenDataGridColumn TItem="Shift" Property="start_time" Title="Start tidspunkt" FormatString="{0:P}" />
+            <RadzenDataGridColumn TItem="Shift" Property="end_time" Title="Slut tidspunkt" FormatString="{0:P}" />
+            <RadzenDataGridColumn TItem="Shift" Property="job.area" Title="Jobområde" />
+        </Columns>
+    </RadzenDataGrid>
+}
+
+@code {
+
+    public Shift[] shifts;
+
+    protected async override Task OnInitializedAsync()
+    {
+        shifts = await Http.GetFromJsonAsync<Shift[]>("api/shift");
+    }
+
+}

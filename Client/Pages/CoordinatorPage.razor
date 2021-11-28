@@ -1,0 +1,83 @@
+﻿@page "/coordinatorpage"
+@using vagtplanen.Shared
+@inject HttpClient Http
+
+
+<EditForm Model="@coor">
+    <h1>Velkommen @coor.first_name</h1>
+
+    <RadzenCard Style="width:922px;">
+        <div class="row">
+            <RadzenCard Style="width:300px;">
+                <div class="row">
+                    <div class="col-md-10">
+                        <b>Ledige vagter:</b>
+                        <div>Her kan du ser tilgængelige ledige vagter</div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-success" @onclick="seeAvailableShifts">Se</button>
+                    </div>
+                </div>
+            </RadzenCard>
+
+            <RadzenCard Style="width:300px;">
+                <div class="row">
+                    <div class="col-md-10">
+                        <b>Alle kuponer</b>
+                        <div>Her kan du ser alle tilgængelige kuponer</div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-success" @onclick="seeAvailableCoupons">Se</button>
+                    </div>
+                </div>
+            </RadzenCard>
+
+            <RadzenCard Style="width:300px;">
+                <div class="row">
+                    <div class="col-md-10">
+                        <b>Mine kuponer:</b>
+                        <div>Her kan du se alle dine købte kuponer</div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-success" @onclick="seeMyCoupons">Se</button>
+                    </div>
+                </div>
+            </RadzenCard>
+
+            <RadzenCard Style="width:300px;">
+                <div class="row">
+                    <div class="col-md-10">
+                        <b>Se skema på vagt:</b>
+                        <div>Se hvem du skal arbejde sammen med</div>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-success" @onclick="seeVolunteersOnShift">Se</button>
+                    </div>
+                </div>
+            </RadzenCard>
+        </div>
+    </RadzenCard>
+</EditForm>
+
+
+@code {
+    [Parameter] public Coordinator coor { get; set; }
+
+    public void seeAvailableShifts()
+    {
+
+    }
+    public void seeAvailableCoupons()
+    {
+
+    }
+    public void seeMyCoupons()
+    {
+
+    }
+    public void seeVolunteersOnShift()
+    {
+
+    }
+
+}
