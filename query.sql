@@ -265,3 +265,16 @@ BEGIN
     DELETE FROM shift WHERE shift_id = id; 
 END 
 $BODY$;  
+
+
+CREATE OR REPLACE PROCEDURE edit_coupon(id int, _description text, _price int)
+LANGUAGE 'plpgsql'
+AS $BODY$ 
+BEGIN 
+    UPDATE coupon
+    SET description = _description,
+    price = _price
+    
+    WHERE coupon_id = id;
+END 
+$BODY$;  
