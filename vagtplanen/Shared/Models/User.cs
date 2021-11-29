@@ -7,7 +7,7 @@ public class User {
 	public string last_name { get; set; }
 	public int mobile { get; set; }
 	public string username { get; set; }
-	private string password;
+	public string password;
 	public int access { get; set; }
 
 }

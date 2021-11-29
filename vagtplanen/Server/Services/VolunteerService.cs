@@ -50,7 +50,7 @@ namespace vagtplanen.Server.Services
                     volunteer.coupons.Add(c);
                     return volunteer;
                 },
-                splitOn: "volunteer_id, coupon_id, shift_id")
+                splitOn: "volunteer_id, shift_id, coupon_id")
                 .Distinct()
                 .ToList();
                 return list;
@@ -88,19 +88,24 @@ namespace vagtplanen.Server.Services
             }
         }
 
-        //public Volunteer CreateVolunteer(Volunteer obj)
-        //{
-        //    using (var conn = OpenConnection(_connectionString))
-        //    {
-        //        var insertSQL = string.Format(
-        //            @"CALL add_volunteer(first_name, last_name, mobile, username, password)
-        //                VALUES('{0}', '{1}', '{2}','{3}', '{4}');",
-        //                obj.first_name, obj.last_name, obj.mobile, obj.username, obj.password);
+        public Volunteer CreateVolunteer(Volunteer obj)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL add_volunteer(@first_name, @last_name, @mobile, @username, @password)";
+                var values = new
+                {
+                    first_name = obj.first_name,
+                    last_name = obj.last_name,
+                    mobil = obj.mobile,
+                    username = obj.username,
+                    password = obj.password
+                };
 
-        //        var res = conn.ExecuteAsync(insertSQL);
-        //        return obj;
-        //    }
-        //}
+                conn.ExecuteAsync(query, values);
+                return obj;
+            }
+        }
 
         //public async Task<Volunteer> Update(int id, Volunteer obj)
         //{

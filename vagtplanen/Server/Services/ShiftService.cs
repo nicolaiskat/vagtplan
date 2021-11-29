@@ -37,7 +37,7 @@ namespace vagtplanen.Server.Services
                         lookup.Add(s.shift_id, shift = s);
                     shift.job = j; shift.volunteer = v;
                     return shift;
-                }, splitOn: "shift_id, job_id, volunteer_id");
+                }, splitOn: "shift_id, volunteer_id, job_id");
                 var resultList = lookup.Values;
                 return resultList;
             }
@@ -53,20 +53,23 @@ namespace vagtplanen.Server.Services
             }
         }
 
+        public Shift CreateShift(Shift obj)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL add_shift(@start_t, @end_t, @descr, @jobid)";
+                var values = new
+                {
+                    start_t = obj.start_time,
+                    end_t = obj.end_time,
+                    descr = obj.description,
+                    jobid = obj.job.job_id
+                };
 
-        //public async Task<Shift> Create(Shift obj)
-        //{
-        //    using (var conn = OpenConnection(_connectionString))
-        //    {
-        //        var insertSQL = string.Format(
-        //            @"CALL addshift(first_name, last_name, mobile, username, password)
-        //                VALUES('{0}', '{1}', '{2}','{3}', '{4}');",
-        //                obj.first_name, obj.last_name, obj.mobile, obj.username, obj.password);
-
-        //        var res = conn.Execute(insertSQL);
-        //        return obj;
-        //    }
-        //}
+                conn.ExecuteAsync(query, values);
+                return obj;
+            }
+        }
 
         //public async Task<Shift> Update(int id, Shift obj)
         //{

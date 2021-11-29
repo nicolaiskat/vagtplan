@@ -53,19 +53,20 @@ namespace vagtplanen.Server.Services
             }
         }
 
-        //public async Task<Job> Create(Job obj)
-        //{
-        //    using (var conn = OpenConnection(_connectionString))
-        //    {
-        //        var insertSQL = string.Format(
-        //            @"CALL addjob(first_name, last_name, mobile, username, password)
-        //                VALUES('{0}', '{1}', '{2}','{3}', '{4}');",
-        //                obj.first_name, obj.last_name, obj.mobile, obj.username, obj.password);
+        public Job Createjob(Job obj)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL add_coupon(@area)";
+                var values = new
+                {
+                    area = obj.area
+                };
 
-        //        var res = conn.Execute(insertSQL);
-        //        return obj;
-        //    }
-        //}
+                conn.ExecuteAsync(query, values);
+                return obj;
+            }
+        }
 
         //public async Task<Job> Update(int id, Job obj)
         //{

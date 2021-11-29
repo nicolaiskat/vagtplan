@@ -1770,11 +1770,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nicolaiskat/Projects/vagtplanen/Client/vagtplanen.Client.csproj",
+      "projectUniqueName": "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/vagtplanen.Client.csproj",
       "projectName": "vagtplanen.Client",
-      "projectPath": "/Users/nicolaiskat/Projects/vagtplanen/Client/vagtplanen.Client.csproj",
+      "projectPath": "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/vagtplanen.Client.csproj",
       "packagesPath": "/Users/nicolaiskat/.nuget/packages/",
-      "outputPath": "/Users/nicolaiskat/Projects/vagtplanen/Client/obj/",
+      "outputPath": "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/nicolaiskat/.config/NuGet/NuGet.Config"
@@ -1789,8 +1789,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "/Users/nicolaiskat/Projects/vagtplanen/Shared/vagtplanen.Shared.csproj": {
-              "projectPath": "/Users/nicolaiskat/Projects/vagtplanen/Shared/vagtplanen.Shared.csproj"
+            "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Shared/vagtplanen.Shared.csproj": {
+              "projectPath": "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Shared/vagtplanen.Shared.csproj"
             }
           }
         }

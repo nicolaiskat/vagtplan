@@ -28,7 +28,7 @@ namespace vagtplanen.Server.Services
         {
             using (var conn = OpenConnection(_connectionString))
             {
-                var query = "SELECT * FROM coupon;";
+                var query = "SELECT * FROM all_coupons;";
                 var result = await conn.QueryAsync<Coupon>(query);
                 return result.ToList();
             }
@@ -44,19 +44,21 @@ namespace vagtplanen.Server.Services
             }
         }
 
-        //public async Task<Coupon> Create(Coupon obj)
-        //{
-        //    using (var conn = OpenConnection(_connectionString))
-        //    {
-        //        var insertSQL = string.Format(
-        //            @"CALL addcoupon(first_name, last_name, mobile, username, password)
-        //                VALUES('{0}', '{1}', '{2}','{3}', '{4}');",
-        //                obj.first_name, obj.last_name, obj.mobile, obj.username, obj.password);
+        public Coupon CreateCoupon(Coupon obj)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL add_coupon(@description, @price)";
+                var values = new
+                {
+                    description = obj.description,
+                    price = obj.price
+                };
 
-        //        var res = conn.Execute(insertSQL);
-        //        return obj;
-        //    }
-        //}
+                conn.ExecuteAsync(query, values);
+                return obj;
+            }
+        }
 
         //public async Task<Coupon> Update(int id, Coupon obj)
         //{

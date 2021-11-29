@@ -1,0 +1,29 @@
+CREATE OR REPLACE VIEW all_volunteers AS
+SELECT v.volunteer_id, v.first_name, v.last_name, v.mobile, v.username, v.access,
+		s.shift_id, s.start_time, s.end_time, s.description, s.taken,
+		c.coupon_id, c.description cdescription, c.price
+		FROM volunteer v
+     LEFT JOIN shift s ON s.volunteer_id = v.volunteer_id
+	 LEFT JOIN coupon_volunteer cv ON cv.volunteer_id = v.volunteer_id
+	 LEFT join coupon c ON c.coupon_id = cv.coupon_id;
+
+
+CREATE OR REPLACE VIEW all_shifts AS
+SELECT s.shift_id, s.start_time, s.end_time, s.description, s.taken,
+		v.volunteer_id, v.first_name, v.last_name, v.mobile, v.username, v.access,
+		j.job_id, j.area
+		FROM shift s
+     LEFT JOIN volunteer v ON v.volunteer_id = s.volunteer_id
+	 LEFT JOIN job j ON j.job_id = s.job_id;
+
+CREATE OR REPLACE VIEW all_jobs
+      SELECT j.job_id,
+    j.area,
+    s.shift_id,
+    s.start_time,
+    s.end_time,
+    s.description,
+    s.taken,
+    s.volunteer_id
+   FROM job j
+     LEFT JOIN shift s ON j.job_id = s.job_id;
