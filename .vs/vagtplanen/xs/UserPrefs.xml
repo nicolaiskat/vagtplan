@@ -1,0 +1,47 @@
+﻿<Properties StartupConfiguration="{756938E9-D97A-47CB-8B33-97138F273F9E}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Server/Services/VolunteerService.cs">
+    <Files>
+      <File FileName="Client/Pages/Login.razor" Line="32" Column="1" />
+      <File FileName="Client/Pages/VolunteerPage.razor" Line="61" Column="1" />
+      <File FileName="Shared/Models/Volunteer.cs" Line="9" Column="3" />
+      <File FileName="Server/Services/VolunteerService.cs" Line="82" Column="40" />
+      <File FileName="Server/Controllers/VolunteerController.cs" Line="14" Column="10" />
+      <File FileName="Shared/Models/Coordinator.cs" Line="1" Column="1" />
+      <File FileName="Shared/Models/User.cs" Line="5" Column="1" />
+      <File FileName="Server/Services/MethodService.cs" Line="1" Column="1" />
+      <File FileName="Server/Services/ShiftService.cs" Line="46" Column="39" />
+      <File FileName="Server/appsettings.json" Line="3" Column="127" />
+      <File FileName="Server/Services/CoordinatorService.cs" Line="4" Column="18" />
+      <File FileName="Client/Components/AvailableShifts.razor" Line="10" Column="5" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="vagtplanen" expanded="True">
+            <Node name="vagtplanen.Client" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Components" expanded="True" />
+              <Node name="Pages" expanded="True" />
+            </Node>
+            <Node name="vagtplanen.Server" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="VolunteerService.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="vagtplanen.Shared" expanded="True">
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.vagtplanen.Server PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>
