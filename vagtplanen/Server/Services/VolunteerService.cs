@@ -83,12 +83,12 @@ namespace vagtplanen.Server.Services
                     volunteer.coupons.Add(c);
                     return volunteer;
                 },
-                splitOn: "volunteer_id, coupon_id, shift_id", param: new { username = un });
+                splitOn: "volunteer_id, shift_id, coupon_id", param: new { username = un });
                 return list.First();
             }
         }
 
-        public Volunteer CreateVolunteer(Volunteer obj)
+        public Volunteer Create(Volunteer obj)
         {
             using (var conn = OpenConnection(_connectionString))
             {
@@ -107,45 +107,37 @@ namespace vagtplanen.Server.Services
             }
         }
 
-        //public async Task<Volunteer> Update(int id, Volunteer obj)
-        //{
-        //    using (var conn = OpenConnection(_connectionString))
-        //    {
-        //        var query = string.Format(@"UPDATE public.volunteer  SET email='{0}'  WHERE id={1};", obj, id);
-        //        @"UPDATE public.volunteer SET first_name='{0}', last_name, mobile, username, password, access WHERE volunteer_id={6};",
-        //                obj.first_name, obj.last_name, obj.mobile, obj.username, obj.password, obj.access, obj.volunteer_id);
-        //        conn.Execute(query);
+        public Volunteer Update(Volunteer obj)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL edit_volunteer(@id, @first_name, @last_name, @mobil)";
+                var values = new
+                {
+                    id = obj.volunteer_id,
+                    first_name = obj.first_name,
+                    last_name = obj.last_name,
+                    mobil = obj.mobile
+                };
 
-        //        return obj;
-        //    }
-        //}
+                conn.ExecuteAsync(query, values);
+                return obj;
+            }
+        }
 
-        //public async Task<Volunteer> Update(Volunteer coor)
-        //{
-        //    using (var conn = OpenConnection(_connStr))
-        //    {
-        //        var updateSQL = string.Format(@"UPDATE public.customer  SET email='{0}'  WHERE id={1};", "catcher_hwq@163.com", GetMaxId());
-        //        var res = conn.Execute(updateSQL);
-        //        Console.WriteLine(res > 0 ? "update successfully!" : "update failure");
-        //        PrintData();
-        //    }
-        //}
+        public int Delete(int id)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL delete_volunteer(@_id)";
+                var values = new
+                {
+                    _id = id
+                };
 
-
-
-
-        //public async Task Delete(int id)
-        //{
-        //    using (var conn = OpenConnection(_connStr))
-        //    {
-        //        var deleteSQL = string.Format(@"DELETE FROM public.customer WHERE id={0};", GetMaxId());
-        //        var res = conn.Execute(deleteSQL);
-        //        Console.WriteLine(res > 0 ? "delete successfully!" : "delete failure");
-        //        PrintData();
-        //    }
-        //}
-
-
-
+                conn.ExecuteAsync(query, values);
+                return id;
+            }
+        }
     }
 }

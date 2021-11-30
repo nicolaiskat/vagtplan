@@ -1,7 +1,7 @@
 ﻿@page "/volunteerpage"
 @using vagtplanen.Shared
+@using vagtplanen.Client.Components;
 @inject HttpClient Http
-@inject NavigationManager uriHelper
 
 <EditForm Model="@vol">
     <h1>Velkommen @vol.first_name</h1>
@@ -15,7 +15,7 @@
                         <div>Her kan du ser tilgængelige ledige vagter</div>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-success" @onclick="seeAvailableShifts">Se</button>
+                        <button class="btn btn-success" @onclick="() => OpenAvailableShiftsDialog()">Se</button>
                     </div>
                 </div>
             </RadzenCard>
@@ -27,7 +27,7 @@
                         <div>Her kan du ser alle tilgængelige kuponer</div>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-success" @onclick="seeAvailableCoupons">Se</button>
+                        <button class="btn btn-success" @onclick="() => OpenAvailableShiftsDialog()">Se</button>
                     </div>
                 </div>
             </RadzenCard>
@@ -39,7 +39,7 @@
                         <div>Her kan du se alle dine købte kuponer</div>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-success" @onclick="seeMyCoupons">Se</button>
+                        <button class="btn btn-success" @onclick="() => OpenAvailableShiftsDialog()">Se</button>
                     </div>
                 </div>
             </RadzenCard>
@@ -51,32 +51,43 @@
                         <div>Se hvem du skal arbejde sammen med</div>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-success" @onclick="seeVolunteersOnShift">Se</button>
+                        <button class="btn btn-success" @onclick="() => OpenAvailableShiftsDialog()">Se</button>
                     </div>
                 </div>
             </RadzenCard>
         </div>
     </RadzenCard>
+    <RadzenDataGrid AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                    Data="@(vol.shifts)" TItem="Shift" Style="width:922px">
+        <Columns>
+            <RadzenDataGridColumn TItem="Shift" Property="description" Title="Beskrivelse" />
+            <RadzenDataGridColumn TItem="Shift" Property="start_time" Title="Start tidspunkt" />
+            <RadzenDataGridColumn TItem="Shift" Property="end_time" Title="Slut tidspunkt" />
+            <RadzenDataGridColumn TItem="Shift" Property="job.area" Title="Jobområde" />
+        </Columns>
+    </RadzenDataGrid>
 </EditForm>
+
+@if (AvailableShiftsDialogOpen)
+{
+    <AvailableShifts OnClose="@OnAvailableShiftsDialogClose"></AvailableShifts>
+}
 
 @code {
 
-    [Parameter] public Volunteer vol { get; set; }
+        [Parameter] public Volunteer vol { get; set; }
 
-    public void seeAvailableCoupons()
+    public bool AvailableShiftsDialogOpen { get; set; }
+
+    public void OpenAvailableShiftsDialog()
     {
-
+        AvailableShiftsDialogOpen = true;
+        StateHasChanged();
     }
-    public void seeMyCoupons()
-    {
 
-    }
-    public void seeVolunteersOnShift()
+    public void OnAvailableShiftsDialogClose(bool accepted)
     {
-
-    }
-    public void seeAvailableShifts()
-    {
-
+        AvailableShiftsDialogOpen = false;
+        StateHasChanged();
     }
 }

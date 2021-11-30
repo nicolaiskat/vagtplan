@@ -1072,6 +1072,7 @@
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/vagtplanen.Client.RazorComponent.input.cache
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/RazorDeclaration/App.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/RazorDeclaration/Components/AvailableShifts.razor.g.cs
+/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/RazorDeclaration/Components/MyShifts.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/RazorDeclaration/Pages/CoordinatorPage.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/RazorDeclaration/Pages/Login.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/RazorDeclaration/Pages/VolunteerPage.razor.g.cs
@@ -1086,6 +1087,7 @@
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/vagtplanen.Client.RazorCoreGenerate.cache
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/Razor/App.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/Razor/Components/AvailableShifts.razor.g.cs
+/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/Razor/Components/MyShifts.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/Razor/Pages/CoordinatorPage.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/Razor/Pages/Login.razor.g.cs
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/obj/Debug/net5.0/Razor/Pages/VolunteerPage.razor.g.cs

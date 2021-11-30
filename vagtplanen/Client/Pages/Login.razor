@@ -36,7 +36,7 @@ else if (page_access == 1)
         isLoading = true;
         try
         {
-            int res = await Http.GetFromJsonAsync<int>($"api/method/{args.Username}/{args.Password}");
+            int res = await Http.GetFromJsonAsync<int>($"api/method/login/{args.Username}/{args.Password}");
             if (res == 0)
             {
                 vol = await Http.GetFromJsonAsync<Volunteer>($"api/volunteer/{args.Username}");

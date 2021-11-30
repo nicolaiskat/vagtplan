@@ -1,25 +1,37 @@
-﻿@page "/availableshifts"
+﻿@inject HttpClient Http
 
-@inject HttpClient Http
-
-<h3>Alle ledige vagter</h3>
-@if (shifts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <RadzenDataGrid AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
-                    Data="@(shifts.Where(x => x.getTaken() == false))" TItem="Shift" ColumnWidth="300px">
-        <Columns>
-            <RadzenDataGridColumn TItem="Shift" Property="shift_id" Title="ID" Width="70px" />
-            <RadzenDataGridColumn TItem="Shift" Property="description" Title="Beskrivelse" />
-            <RadzenDataGridColumn TItem="Shift" Property="start_time" Title="Start tidspunkt" FormatString="{0:P}" />
-            <RadzenDataGridColumn TItem="Shift" Property="end_time" Title="Slut tidspunkt" FormatString="{0:P}" />
-            <RadzenDataGridColumn TItem="Shift" Property="job.area" Title="Jobområde" />
-        </Columns>
-    </RadzenDataGrid>
-}
+<div class="modal fade show modal-lg" id="myModal" style="display:block;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Alle ledige vagter</h3>
+                <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
+            </div>
+            <div class="modal-body">
+                @if (shifts == null)
+                {
+                    <p><em>Loading...</em></p>
+                }
+                else
+                {
+                    <RadzenDataGrid AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                    Data="@(shifts.Where(x => x.taken == false))" TItem="Shift" Style="width:922px">
+                        <Columns>
+                            <RadzenDataGridColumn TItem="Shift" Property="shift_id" Title="ID" Width="70px" />
+                            <RadzenDataGridColumn TItem="Shift" Property="description" Title="Beskrivelse" />
+                            <RadzenDataGridColumn TItem="Shift" Property="start_time" Title="Start tidspunkt" />
+                            <RadzenDataGridColumn TItem="Shift" Property="end_time" Title="Slut tidspunkt" />
+                            <RadzenDataGridColumn TItem="Shift" Property="job.area" Title="Jobområde" />
+                        </Columns>
+                    </RadzenDataGrid>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" @onclick="@ModalOk">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
 
@@ -30,4 +42,16 @@ else
         shifts = await Http.GetFromJsonAsync<Shift[]>("api/shift");
     }
 
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
 }

@@ -1,0 +1,47 @@
+﻿@inject HttpClient Http
+
+<EditForm Model="@vol">
+    <div class="modal fade show modal-lg" id="myModal" style="display:block;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Alle mine vagter</h3>
+                    <button type="button" class="close" @onclick="@ModalCancel">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <RadzenDataGrid AllowFiltering="true" AllowPaging="true" AllowSorting="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                                        Data="@(vol.shifts)" TItem="Shift" ColumnWidth="300px">
+                        <Columns>
+                            <RadzenDataGridColumn TItem="Shift" Property="description" Title="Beskrivelse" />
+                            <RadzenDataGridColumn TItem="Shift" Property="start_time" Title="Start tidspunkt" />
+                            <RadzenDataGridColumn TItem="Shift" Property="end_time" Title="Slut tidspunkt" />
+                            <RadzenDataGridColumn TItem="Shift" Property="job.area" Title="Jobområde" />
+                        </Columns>
+                    </RadzenDataGrid>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" @onclick="@ModalOk">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+
+    [Parameter]
+    public Volunteer vol { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+}

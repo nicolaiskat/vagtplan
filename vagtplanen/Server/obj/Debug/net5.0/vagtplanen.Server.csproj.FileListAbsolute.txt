@@ -67,6 +67,7 @@
 /Users/nicolaiskat/Projects/vagtplanen/Server/obj/Debug/net5.0/ref/vagtplanen.Server.dll
 /Users/nicolaiskat/Projects/vagtplanen/Server/obj/Debug/net5.0/vagtplanen.Server.pdb
 /Users/nicolaiskat/Projects/vagtplanen/Server/obj/Debug/net5.0/vagtplanen.Server.genruntimeconfig.cache
+/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/vagtplanen.Client.StaticWebAssets.xml
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/appsettings.Development.json
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/appsettings.json
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/BlazorDebugProxy/BrowserDebugHost.dll
@@ -78,7 +79,6 @@
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/BlazorDebugProxy/Mono.Cecil.Pdb.dll
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/BlazorDebugProxy/Mono.Cecil.Rocks.dll
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/BlazorDebugProxy/Newtonsoft.Json.dll
-/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/vagtplanen.Client.StaticWebAssets.xml
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/vagtplanen.Server.StaticWebAssets.xml
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/vagtplanen.Server.deps.json
 /Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/bin/Debug/net5.0/vagtplanen.Server.runtimeconfig.json

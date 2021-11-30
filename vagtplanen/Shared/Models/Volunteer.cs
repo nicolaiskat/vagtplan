@@ -30,7 +30,7 @@ public class Volunteer : User  {
             {
                 foreach (Shift shift in shifts)
                 {
-                    if (shift != null)
+                    if (shift != null && DateTime.Compare(shift.end_time, DateTime.Now) == -1)
                     {
                         var hours = (shift.end_time - shift.start_time).TotalHours;
                         sum += hours;

@@ -47,55 +47,50 @@ namespace vagtplanen.Server.Controllers
             }
         }
 
-        //[HttpPost]
-        //public IActionResult Create(Volunteer obj)
-        //{
-        //    try
-        //    {
-        //        var _obj = _service.CreateVolunteer(obj);
-        //        return CreatedAtRoute("VolunteerById", _obj);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //log error
-        //        return StatusCode(500, ex.Message);
-        //    }
-        //}
+        [HttpPost]
+        public IActionResult Create(Volunteer vol)
+        {
+            try
+            {
+                var _obj = _service.Create(vol);
+                return CreatedAtRoute("CouponById", _obj);
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
 
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> UpdateCompany(int id, CompanyForUpdateDto company)
-        //{
-        //    try
-        //    {
-        //        var dbCompany = await _companyRepo.GetCompany(id);
-        //        if (dbCompany == null)
-        //            return NotFound();
-        //        await _companyRepo.UpdateCompany(id, company);
-        //        return NoContent();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //log error
-        //        return StatusCode(500, ex.Message);
-        //    }
-        //}
 
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteCompany(int id)
-        //{
-        //    try
-        //    {
-        //        var dbCompany = await _companyRepo.GetCompany(id);
-        //        if (dbCompany == null)
-        //            return NotFound();
-        //        await _companyRepo.DeleteCompany(id);
-        //        return NoContent();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //log error
-        //        return StatusCode(500, ex.Message);
-        //    }
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _service.Delete(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPut]
+        public IActionResult Update(Volunteer vol)
+        {
+            try
+            {
+                var coor = _service.Update(vol);
+                return Ok(coor);
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

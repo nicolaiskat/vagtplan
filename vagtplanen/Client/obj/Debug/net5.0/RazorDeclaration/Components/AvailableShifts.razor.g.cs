@@ -13,90 +13,89 @@ namespace vagtplanen.Client.Components
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 1 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 2 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 3 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 4 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 5 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 6 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 7 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 8 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 9 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using vagtplanen.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 10 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using vagtplanen.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 11 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Radzen;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "/Users/nicolaiskat/Projects/vagtplanen/Client/_Imports.razor"
+#line 12 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/_Imports.razor"
 using Radzen.Blazor;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/availableshifts")]
     public partial class AvailableShifts : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -105,7 +104,7 @@ using Radzen.Blazor;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "/Users/nicolaiskat/Projects/vagtplanen/Client/Components/AvailableShifts.razor"
+#line 36 "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Client/Components/AvailableShifts.razor"
        
 
     public Shift[] shifts;
@@ -115,6 +114,18 @@ using Radzen.Blazor;
         shifts = await Http.GetFromJsonAsync<Shift[]>("api/shift");
     }
 
+    [Parameter]
+    public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
 
 #line default
 #line hidden
