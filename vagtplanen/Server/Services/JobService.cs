@@ -53,59 +53,34 @@ namespace vagtplanen.Server.Services
             }
         }
 
-        //public async Task<Job> Create(Job obj)
-        //{
-        //    using (var conn = OpenConnection(_connectionString))
-        //    {
-        //        var insertSQL = string.Format(
-        //            @"CALL addjob(first_name, last_name, mobile, username, password)
-        //                VALUES('{0}', '{1}', '{2}','{3}', '{4}');",
-        //                obj.first_name, obj.last_name, obj.mobile, obj.username, obj.password);
+        public Job Create(Job obj)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL add_coupon(@area)";
+                var values = new
+                {
+                    area = obj.area
+                };
 
-        //        var res = conn.Execute(insertSQL);
-        //        return obj;
-        //    }
-        //}
+                conn.ExecuteAsync(query, values);
+                return obj;
+            }
+        }
 
-        //public async Task<Job> Update(int id, Job obj)
-        //{
-        //    using (var conn = OpenConnection(_connectionString))
-        //    {
-        //        var query = string.Format(@"UPDATE public.job  SET email='{0}'  WHERE id={1};", obj, id);
-        //        @"UPDATE public.job SET first_name='{0}', last_name, mobile, username, password, access WHERE job_id={6};",
-        //                obj.first_name, obj.last_name, obj.mobile, obj.username, obj.password, obj.access, obj.job_id);
-        //        conn.Execute(query);
+        public int Delete(int id)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"CALL delete_job(@_id)";
+                var values = new
+                {
+                    _id = id
+                };
 
-        //        return obj;
-        //    }
-        //}
-
-        //public async Task<Job> Update(Job coor)
-        //{
-        //    using (var conn = OpenConnection(_connStr))
-        //    {
-        //        var updateSQL = string.Format(@"UPDATE public.customer  SET email='{0}'  WHERE id={1};", "catcher_hwq@163.com", GetMaxId());
-        //        var res = conn.Execute(updateSQL);
-        //        Console.WriteLine(res > 0 ? "update successfully!" : "update failure");
-        //        PrintData();
-        //    }
-        //}
-
-
-
-
-        //public async Task Delete(int id)
-        //{
-        //    using (var conn = OpenConnection(_connStr))
-        //    {
-        //        var deleteSQL = string.Format(@"DELETE FROM public.customer WHERE id={0};", GetMaxId());
-        //        var res = conn.Execute(deleteSQL);
-        //        Console.WriteLine(res > 0 ? "delete successfully!" : "delete failure");
-        //        PrintData();
-        //    }
-        //}
-
-
-
+                conn.ExecuteAsync(query, values);
+                return id;
+            }
+        }
     }
 }

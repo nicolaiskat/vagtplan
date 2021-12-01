@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zmyGRP6fbliP0D2GFtG36wVmmiXu37ElWRoNTN3ARxP1/bO7ABobBS3pVkLMxa+iheoFlayEJH7G+Lk7xKV65g==",
+  "dgSpecHash": "k1YEHmviDu3elO528D7pXyDMUrshEoX6Zy9r4B/iXHO2PjDwrMNj4D+gYdj9ooU9DiE7JY6GOaALNrOZpSb2tQ==",
   "success": true,
-  "projectFilePath": "/Users/nicolaiskat/Projects/vagtplanen/Server/vagtplanen.Server.csproj",
+  "projectFilePath": "/Users/nicolaiskat/Projects/vagtplanen/vagtplanen/Server/vagtplanen.Server.csproj",
   "expectedPackageFiles": [
     "/Users/nicolaiskat/.nuget/packages/blazorcomponentutilities/1.6.0/blazorcomponentutilities.1.6.0.nupkg.sha512",
     "/Users/nicolaiskat/.nuget/packages/blazorpro.spinkit/1.2.0/blazorpro.spinkit.1.2.0.nupkg.sha512",

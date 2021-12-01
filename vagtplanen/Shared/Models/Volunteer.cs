@@ -7,11 +7,16 @@ public class Volunteer : User  {
         get
         {
             double sum = 0;
-            foreach (Shift shift in shifts)
-            {
-                var hours = (shift.end_time - shift.start_time).TotalHours;
-                sum += hours;
-            }
+            if (shifts != null)
+                foreach (Shift shift in shifts)
+                {
+                    if (shift != null)
+                    {
+                        var hours = (shift.end_time - shift.start_time).TotalHours;
+                        sum += hours;
+                    }
+
+                }
             return sum;
         }
     }
@@ -21,14 +26,27 @@ public class Volunteer : User  {
         get
         {
             double sum = -6;
-            foreach (Shift shift in shifts)
+            if (shifts != null)
             {
-                var hours = (shift.end_time - shift.start_time).TotalHours;
-                sum += hours;
+                foreach (Shift shift in shifts)
+                {
+                    if (shift != null && DateTime.Compare(shift.end_time, DateTime.Now) == -1)
+                    {
+                        var hours = (shift.end_time - shift.start_time).TotalHours;
+                        sum += hours;
+                    }
+                }
             }
-            foreach (Coupon coupon in coupons)
+            if (coupons != null)
             {
-                sum -= coupon.price;
+                foreach (Coupon coupon in coupons)
+                {
+                    if (coupon != null)
+                    {
+                        sum -= coupon.price;
+
+                    }
+                }
             }
             if (sum < 0)
                 return 0;

@@ -34,5 +34,45 @@ namespace vagtplanen.Server.Services
                 return result;
             }
         }
+
+        public async Task UseCoupon(int vol, int coup)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"SELECT use_coupon(@volunteer, @coupon)";
+                var values = new { volunteer = vol, coupon = coup };
+                await conn.ExecuteAsync(query, values);
+            }
+        }
+
+        public async Task BuyCoupon(int vol, int coup)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"SELECT buy_coupon(@volunteer, @coupon)";
+                var values = new { volunteer = vol, coupon = coup };
+                await conn.ExecuteAsync(query, values);
+            }
+        }
+
+        public async Task DeassignShift(int vol, int shi)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"SELECT deassign_shift(@volunteer, @shift)";
+                var values = new { volunteer = vol, shift = shi };
+                await conn.ExecuteAsync(query, values);
+            }
+        }
+
+        public async Task AssignShift(int vol, int shi)
+        {
+            using (var conn = OpenConnection(_connectionString))
+            {
+                var query = @"SELECT assign_shift(@volunteer, @shift)";
+                var values = new { volunteer = vol, shift = shi };
+                await conn.ExecuteAsync(query, values);
+            }
+        }
     }
 }

@@ -1,0 +1,38 @@
+﻿<Properties StartupConfiguration="{756938E9-D97A-47CB-8B33-97138F273F9E}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="Client/Components/AvailableShifts.razor" Line="5" Column="36" />
+      <File FileName="Client/Pages/Login.razor" Line="41" Column="14" />
+      <File FileName="Shared/Models/Shift.cs" Line="9" Column="1" />
+      <File FileName="Shared/Models/Volunteer.cs" Line="57" Column="25" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="vagtplanen" expanded="True">
+            <Node name="vagtplanen.Client" expanded="True">
+              <Node name="Components" expanded="True" />
+              <Node name="Pages" expanded="True">
+                <Node name="VolunteerPage.razor" selected="True" />
+              </Node>
+            </Node>
+            <Node name="vagtplanen.Server" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Services" expanded="True" />
+            </Node>
+            <Node name="vagtplanen.Shared" expanded="True">
+              <Node name="Models" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.vagtplanen.Server PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>
